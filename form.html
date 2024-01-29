@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Form 정리</title>
+   <style>
+      body {
+         width: 1000px;
+         margin: 0 auto;
+         padding: 20px;
+      }
+   </style>
+   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+</head>
+
+<body>
+   <h1>form 태그 역할 및 동작</h1>
+   <hr>
+   <div>
+      <h2>form 역할</h2>
+      <ol>
+         <li>웹 사용자의 의견이나 정보를 받을 때 사용하는 큰 틀.</li>
+         <li>form으로 입력된 사용자 데이터 전체를 서버로 전송가능.</li>
+         <li>서버 프로그램은 form으로 들어온 데이터를 사용하여 html 페이지를 구성하고 웹 브라우저에 전송후 출력.</li>
+      </ol>
+   </div>
+   <hr>
+   <div>
+      <h2>form 동작 순서</h2>
+      <ol>
+         <li>사용자가 form으로 구성된 페이지에 데이터를 입력 후 submit</li>
+         <li>form에 입력된 데이터가 서버로 전송됨</li>
+         <li>서버에 있는 서버 프로그램이 form 데이터 처리 후 html 페이지 구성</li>
+         <li>구성된 html 페이지를 웹 브라우져로 보냄</li>
+         <li>웹 브라우져에서 출력하여 사용자에게 보여짐</li>
+      </ol>
+   </div>
+   <hr>
+   <div>
+      <h2>form 태그 속성</h2>
+      <ol>
+         <li><b>action</b> : form을 전송할 서버 쪽 스크립트 파일을 지정함</li>
+         <li><b>name</b> : form을 식별하기 위한 이름 지정</li>
+         <li><b>accept-charset</b> : form 전송에 사용할 문자 인코딩 지정</li>
+         <li><b>target</b> : action에서 지정한 스크립트 파일을 현재 창이 아닌 다른 위치에서 열도록 지정</li>
+         <li><b>method</b> : form을 서버로 전송할 http 메소드를 정함(<b>GET</b> 또는 <b>POST</b> 메소드)</li>
+      </ol>
+      <br>
+      *참고 : <b>GET</b> 과 <b>POST</b> 모두 서버로 데이터를 전송하느 역할. 단 <b>GET</b>은 URL에 데이터 노출. <b>POST</b>는 숨겨짐.
+
+   </div>
+   <hr>
+   <div>
+      <h2>form을 구성하는 엘리먼트 <br>(form 하위 태그 fieldset, input, select, textarea)</h2>
+      <h3>fieldset, legend 태그</h3>
+      <ol>
+         <li><b>fieldset</b> 태그 : form 태그 안에서 관련 엘리먼트들을 그룹화 할 때 사용</li>
+         <li><b>legend</b> 태그 : fieldset 태그 하위 태그로 그룹화 된 태그 이름 지정</li>
+      </ol>
+      <div style="margin: auto; width: 230px">
+         <form action="#" name="p1Info" accept-charset="UTF-8" method="post">
+            <fieldset style="width:200px">
+               <legend>개인 정보 입력</legend>
+               이름 : <input type='text' name='name' style="width: 100px"><br>
+               나이 : <input type='text' name='age' style="width: 100px"><br>
+            </fieldset>
+            <br>
+            <fieldset style="width: 200px;">
+               <legend>여가 활동</legend>
+               취미 : <input type="text" name="hobby" style="width: 100px"><br>
+               특기 : <input type="text" name="speciality" style="width: 100px"><br>
+            </fieldset>
+         </form>
+      </div>
+      <br>
+      <h3>input 태그 속성</h3>
+      <ol>
+         <li><b>type</b> : text, radio, checkbox, password, button, hidden, fileupload, submit, reset 등 지정 가능</li>
+         <li><b>name</b> : 태그 이름 지정 (같은 이름으로 묶으면 radio에서 하나만 선택됨)</li>
+         <li><b>readonly</b> : 태그 읽기전용으로 지정</li>
+         <li><b>maxlength</b> : 해당 태그 최대 글자 수 지정</li>
+         <li><b>required</b> : 해당 태그 필수 지정. submit에 반드시 필요한 정보</li>
+         <li><b>autofocus</b> : 웹 페이지 로딩시 지정된 해당 태그로 포커스 이동</li>
+         <li><b>placeholder</b> : 정보 입력 자리에 힌트 출력</li>
+         <li><b>pattern</b> : 정규표현식 (예. 이메일, 주민버호 등)으로 유효한 값만 입력받을 때</li>
+         <li><b>value</b> : input 태그의 value 속성은 input 요소의 초깃값(value)을 명시 (속성값에 따라 역할 다름) <br>
+            <ul>
+               <li>button, reset, submit : 버튼 내의 텍스트를 정의함.</li>
+               <li>hidden, password, text : 입력 필드의 초깃값을 정의함.</li>
+               <li>checkbox, image, radio : 해당 입력 필드를 선택 시 서버로 제출되는 값을 정의함.</li>
+            </ul>
+            또한, input 요소의 type 속성값이 “file”인 경우에는 value 속성을 사용할 수 없음
+         </li>
+      </ol>
+      <br>
+      <div style="margin: auto; width: 330px">
+         <form method="post" name="p2Info" action="#">
+            <fieldset style="width: 300px; height: auto;">
+               <legend>개인 정보 입력</legend>
+               이름 : <input type="text" placeholder="홍길동" required name="name"><br><br>
+
+               주민번호 : <input type="text" placeholder="123456-1234567" pattern="\d{6}-\d{7}" required
+                  name="seq_num"><br><br>
+
+               아이디 : <input type="text" required name="id"><br><br>
+
+               패스워드 : <input tpye="password" required name="pw"
+                  pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,15}$"
+                  placeholder="특문,숫자,대문자 각 하나 이상 포함"><br><br>
+
+               성별 :
+               남<input type="radio" name="gender">
+               여<input type="radio" name="gender"><br><br>
+
+               관심사 :
+               연예<input type="checkbox" name="check1">
+               스포츠<input type="checkbox" name="check2">
+               IT<input type="checkbox" name="check3">
+               레저<input type="checkbox" name="check4">
+               <br><br>
+
+               <input type="submit">
+               <input type="reset"><br>
+
+            </fieldset>
+         </form>
+      </div>
+      <br>
+
+      <div>
+         <h3>datalist 태그 (input 입력 값 후보, HTML5에서 추가 됨)</h3>
+         <ol>
+            <li>form 태그</li>
+            <ul>
+               <li>fieldset 태그</li>
+               <ul>
+                  <li>input 태그, list 속성 = "datalist_id값"</li>
+                  <li>datalist 태그, id 속성 = "datalist_id값"</li>
+               </ul>
+            </ul>
+         </ol>
+         <div style="margin: auto; width: 360px;">
+            <form action="#" method="post" name="inputDataList" style="width:350px" accept-charset="UTF-8">
+               <fieldset>
+                  <legend>input 입력 값 후보 (datalist)</legend>
+                  선호하는 낚시 브랜드를 입력해주세요.<br>
+                  <input type="text" name="brand" list="brandList">
+                  <datalist id="brandList">
+                     <option>SHIMANO</option>
+                     <option>DAIWA</option>
+                     <option>DOYO</option>
+                     <option>BANAX</option>
+                     <option>BLANKWORKS</option>
+                     <option>MAJORCRAFT</option>
+                     <option>CODEBLUE</option>
+                  </datalist>
+                  <br><br>
+                  <input type="submit"> <input type="reset">
+               </fieldset>
+            </form>
+         </div>
+      </div>
+      <br>
+      <div>
+         <h3>input 태그 type 속성 date (HTML5에서 추가됨)</h3>
+         <ol>
+            <li><b>min</b> 속성: 시작 날짜</li>
+            <li><b>max</b> 속성: 끝 날짜</li>
+            <li><b>step</b> 속성: 며칠씩 건너 뜀 (안 쓰면 default값인 1)</li><br>
+            *참고 : date, month, week, time, datetime, datetime-local이 같이 추가됨
+         </ol>
+         <div style="margin: auto; width: 330px;">
+            <form style="width: 300px;" name="inputDate" action="#" method="post" accept-charset="UTF-8">
+               <fieldset>
+                  <legend>type 속성의 date</legend>
+                  <input type="date" min="1970-01-01" max="2004-01-01" name="date">
+                  <input type="submit"> <input type="reset">
+               </fieldset>
+            </form>
+         </div>
+      </div>
+      <br>
+      <div>
+         <h3>input 태그 type 속성의 number, range (HTML5 에서 추가됨)</h3>
+         js, jquery를 사용하여 range의 슬라이더 움직임에 따라 실시간 값을 보여줄 수 있음<br><br>
+         <div style="margin: auto; width: 330px;">
+            <form style="width: 300px;">
+               <fieldset>
+                  <legend>type 속성의 number와 range</legend>
+
+                  number : <input type="number" name="number" value="55.5" step="0.1" min="0" max="100"><br>
+
+                  range : <input type="range" class="slider_range" value="0" min="0" max="100">
+                  <font size=3 id="slider_value_view">0</font><br><br>
+                  <input type="submit"> <input type="reset">
+               </fieldset>
+            </form>
+         </div>
+      </div>
+      <br>
+      <div>
+         <h3>input 태그 type 속성의 color (HTML5에서 추가됨)</h3>
+         <div style="width: 330px; margin: auto;">
+            <form style="width: 300px;" action="#" method="post" accept-charset="UTF-8">
+               <fieldset>
+                  <legend>type 속성의 color</legend>
+                  <input type="color"><br><br>
+                  <input type="submit"> <input type="reset">
+               </fieldset>
+            </form>
+         </div>
+      </div>
+      <br>
+      <div>
+         <h3>select, optgroup, option (목록)태그</h3>
+         <ol>
+            <li><b>select</b> 태그 : select 태그 안에 option 태그를 사용하여 여러 항목 만들 수 있음 (속성 size, multiple)</li>
+            <li><b>optgroup</b> 태그 : select 태그 안에서 option 태그들을 같은 항목으로 묶음 (속성 label)</li>
+            <li><b>option</b> 태그 : select 태그 안에 option 태그를 사용하여 여러 항목 만들 수 있음 </li>
+         </ol>
+      </div>
+      <br>
+      <div style="margin: auto; width: 330px;">
+         <form method="post" action="#" accept-charset="UTF-8" name="p3Info">
+            <fieldset style="width: 300px;">
+               <legend>개인 정보 입력</legend>
+               지역 선택<br>
+               <select name="city" size="1">
+                  <optgroup label="서울">
+                     <option value="gn">강남구</option>
+                     <option value="sp">송파구</option>
+                     <option value="sc">서초구</option>
+                     <option value="gs">강서구</option>
+                     <option value="j">중구</option>
+                  </optgroup>
+                  <optgroup label="경기도">
+                     <option value="ay">안양시</option>
+                     <option value="gc">과천시</option>
+                     <option value="sn">성남시</option>
+                     <option value="yi">용인시</option>
+                  </optgroup>
+               </select>
+               <input type="submit" value="submit">
+               <input type="reset" value="reset">
+            </fieldset>
+         </form>
+      </div>
+   </div>
+   <br>
+   <div>
+      <h3>textarea 여러 줄 글상자 태그</h3>
+      form 태그 안에 fieldset 태그 안에 textarea 태그를 사용하고 속성으로 rows, cols 사용<br><br>
+      <div style="margin: auto; width: 300px;">
+         <form action="#" accept-charset="UTF-8" method="post" name="p4Info" style="width: 300px;">
+            <fieldset>
+               <legend>개인 정보 입력</legend>
+               가입인사<br>
+               <textarea rows="5" cols="35" placeholder="가입인사 남겨주세요"></textarea><br><br>
+               <input type="submit">
+               <input type="reset">
+            </fieldset>
+         </form>
+      </div>
+   </div>
+   <br>
+
+
+   <hr>
+
+   <br><br><br><br><br><br><br><br><br><br>
+   <script>
+      function ShowSliderValue(sVal) {
+         var obValueView = document.getElementById("slider_value_view");
+         obValueView.innerHTML = sVal
+      }
+
+      var RangeSlider = function () {
+         var range = $('.slider_range');
+
+         range.on('input', function () {
+            ShowSliderValue(this.value);
+         });
+      };
+
+      RangeSlider();
+   </script>
+</body>
+
+</html>
